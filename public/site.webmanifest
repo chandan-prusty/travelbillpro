@@ -1,0 +1,8 @@
+{
+  "name": "Travel Bill Pro",
+  "short_name": "TravelBillPro",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#0F172A",
+  "background_color": "#F8FAFC",
+  "display": "standalone"
+}

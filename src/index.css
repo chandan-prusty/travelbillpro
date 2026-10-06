@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/*
+  Travel Bill Pro — clean soft-UI system (inspired by quirgo.com)
+  One typeface, one accent, soft borderless surfaces, generous whitespace.
+*/
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  /* Surfaces & text */
+  --color-canvas: #f4f7fb;
+  --color-ink-900: #111827;
+  --color-ink-700: #374151;
+  --color-ink-500: #6b7280; /* 4.8:1 on white, 4.5:1 on canvas */
+
+  /* Single accent: brand violet — white text passes AA (5:1) */
+  --color-accent: #6a08db; /* white text 8.4:1 */
+  --color-accent-hover: #5706b5;
+  --color-accent-soft: #f3eafe;
+  --color-accent-bright: #8b3dff; /* decorative only */
+
+  /* Legacy tokens kept for the product mockups */
+  --color-navy: #111827;
+  --color-navy-800: #1f2937;
+  --color-teal: #6a08db;
+  --color-teal-dark: #5706b5;
+  --color-ink: #04231a;
+  --color-gold: #f59e0b;
+  --color-soft: #f4f7fb;
+  --color-success: #22c55e;
+  --color-danger: #dc2626;
+
+  --shadow-soft: 0 1px 2px rgb(17 24 39 / 0.03), 0 12px 32px -14px rgb(17 24 39 / 0.14);
+  --shadow-lift: 0 2px 4px rgb(17 24 39 / 0.04), 0 22px 44px -18px rgb(17 24 39 / 0.22);
+  --shadow-accent: 0 12px 28px -12px rgb(106 8 219 / 0.55);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-blink: blink 1s step-end infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+}
+
+@layer base {
+  html, body { overflow-x: clip; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-canvas font-sans text-ink-900 antialiased;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  h1, h2, h3, h4 {
+    @apply text-ink-900;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+  h3 { font-weight: 500; letter-spacing: -0.01em; }
+  p { text-wrap: pretty; }
+  ::selection { background: rgb(106 8 219 / 0.18); }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 8px; }
+  button, a, summary, label[for] { cursor: pointer; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1216px] px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-20 sm:py-28; }
+
+  .surface {
+    @apply rounded-[20px] bg-white;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 text-[15px] font-medium whitespace-nowrap transition duration-200 ease-out select-none;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { @apply bg-accent text-white; box-shadow: var(--shadow-accent); }
+  .btn-primary:hover { @apply bg-accent-hover; }
+  .btn-secondary { @apply bg-white text-ink-900; box-shadow: var(--shadow-soft); }
+  .btn-secondary:hover { @apply text-accent; }
+  .btn-light { @apply bg-white text-accent; }
+  .btn-light:hover { @apply bg-accent-soft; }
+  .btn-outline-light { @apply border border-white/50 text-white; }
+  .btn-outline-light:hover { @apply bg-white/10; }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm text-ink-900;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .icon-circle {
+    @apply inline-flex size-12 items-center justify-center rounded-full bg-canvas text-accent;
+    box-shadow: inset 0 0 0 1px rgb(17 24 39 / 0.04), 0 6px 14px -8px rgb(17 24 39 / 0.18);
+  }
+
+  .field {
+    @apply w-full rounded-xl bg-canvas px-4 py-3 text-[15px] text-ink-900 transition outline-none placeholder:text-ink-500;
+    box-shadow: inset 0 0 0 1px rgb(17 24 39 / 0.06);
+  }
+  .field:focus { @apply bg-white; box-shadow: inset 0 0 0 1.5px var(--color-accent), 0 0 0 4px rgb(106 8 219 / 0.12); }
+  .field[aria-invalid="true"] { box-shadow: inset 0 0 0 1.5px var(--color-danger), 0 0 0 4px rgb(220 38 38 / 0.1); }
+
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  .prose-legal h2 { @apply mt-10 mb-3 text-xl font-medium; }
+  .prose-legal p, .prose-legal li { @apply text-ink-700; }
+  .prose-legal ul { @apply my-3 list-disc space-y-1.5 pl-6; }
+  .prose-legal p { @apply my-3; }
+
+  /* Legacy helper used by the mockups */
+  .bg-brand-gradient { background-image: linear-gradient(135deg, #6a08db 0%, #9d4edd 100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

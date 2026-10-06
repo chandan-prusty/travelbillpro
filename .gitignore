@@ -1,0 +1,19 @@
+# Dependencies & build output
+node_modules/
+dist/
+
+# Environment (e.g. VITE_LEAD_ENDPOINT)
+.env
+.env.*
+!.env.example
+
+# Local tooling / editor
+.claude/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
+
+# Local backup of the previous design
+_v1-backup/
