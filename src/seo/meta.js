@@ -78,6 +78,7 @@ const organization = {
   '@type': 'Organization',
   '@id': ORG_ID,
   name: BRAND,
+  alternateName: 'TravelBillPro',
   url: abs('/'),
   logo: { '@type': 'ImageObject', url: abs('/brand/travel-bill-pro-logo-1200.png'), width: 1200, height: 291 },
   image: abs('/brand/travel-bill-pro-mark-512.png'),
@@ -92,7 +93,12 @@ const organization = {
   ...(sameAs.length ? { sameAs } : {}),
 }
 
-const website = { '@type': 'WebSite', '@id': SITE_ID, url: abs('/'), name: BRAND, inLanguage: 'en-IN', publisher: { '@id': ORG_ID } }
+// Google site name: WebSite.name on the home page is the primary signal (https://developers.google.com/search/docs/appearance/site-names)
+const website = {
+  '@type': 'WebSite', '@id': SITE_ID, url: abs('/'), name: BRAND,
+  alternateName: ['TravelBillPro', 'Travel Bill Pro India'],
+  inLanguage: 'en-IN', publisher: { '@id': ORG_ID },
+}
 
 const software = {
   '@type': 'SoftwareApplication',

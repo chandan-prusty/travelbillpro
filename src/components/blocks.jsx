@@ -35,7 +35,7 @@ export function Hero() {
   return (
     <section className="pt-36 sm:pt-44 [@media(max-height:500px)]:pt-24">
       <div className="container-x flex flex-col items-center text-center">
-        <span className="pill"><span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" /><span className="sm:hidden">Travel Billing Software</span><span className="hidden sm:inline">Travel Billing Software · {SITE.tagline}</span></span>
+        <span className="pill"><span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" /><span className="sm:hidden">Travel Bill Pro · Billing Software</span><span className="hidden sm:inline">Travel Bill Pro · Travel Billing Software for India</span></span>
         <h1 className="mt-8 text-[34px] leading-[1.08] min-[360px]:text-[42px] sm:text-6xl lg:text-[72px]">
           Manage Your Entire Travel Business
           <span className="mt-2 block min-h-[2.3em] text-accent sm:min-h-[1.15em]"><Typewriter words={HERO_WORDS} /></span>
