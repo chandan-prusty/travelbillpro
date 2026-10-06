@@ -17,6 +17,15 @@
 /og-image.jpg
   Cache-Control: public, max-age=604800
 
+# Sitemap: explicit XML type + charset; keep the file itself out of search results
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: noindex
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+
 # Keep branch/preview deployments (e.g. abc123.travelbillpro.pages.dev) out of search results
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
