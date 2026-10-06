@@ -1,0 +1,22 @@
+# Cloudflare Pages headers — https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()
+
+# Hashed build assets (JS, CSS, fonts) never change — cache for a year
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/media/*
+  Cache-Control: public, max-age=2592000
+
+/og-image.jpg
+  Cache-Control: public, max-age=604800
+
+# Keep branch/preview deployments (e.g. abc123.travelbillpro.pages.dev) out of search results
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex

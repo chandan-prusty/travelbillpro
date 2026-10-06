@@ -1,1 +1,15 @@
-/*  /index.html  200
+# Cloudflare Pages redirects — https://developers.cloudflare.com/pages/configuration/redirects/
+# Every page is prerendered to its own HTML file, so there is no SPA catch-all
+# (unknown URLs return a real 404 from 404.html instead of a soft 404).
+
+/home                     /                                     301
+/index                    /                                     301
+/blogs                    /blog                                 301
+/guides                   /blog                                 301
+/travel-billing           /travel-billing-software              301
+/billing-software         /travel-billing-software              301
+/agency-software          /travel-agency-software               301
+/book-demo                /demo                                 301
+/contact-us               /contact                              301
+/privacy-policy           /privacy                              301
+/terms-and-conditions     /terms                                301

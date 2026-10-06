@@ -1,5 +1,4 @@
 import { Target, Eye } from 'lucide-react'
-import { Seo } from '../components/Layout'
 import { Reveal } from '../components/ui'
 import { PageHeader, SectionTitle, StatsBand, CTABlock } from '../components/blocks'
 import { TIMELINE } from '../data/content'
@@ -7,8 +6,6 @@ import { TIMELINE } from '../data/content'
 export default function About() {
   return (
     <>
-      <Seo title="About Us — Our Story & Mission" path="/about"
-        description="Travel Bill Pro is a Hyderabad-based team on a mission to empower India's travel businesses with smart, simple technology." />
       <PageHeader pill="About us" title="Empowering India's travel businesses" accent="with smart technology." />
 
       <section className="section !pt-6">

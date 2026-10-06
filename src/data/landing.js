@@ -1,0 +1,141 @@
+// Keyword landing pages. Each targets one primary query with a distinct angle,
+// opens with a direct, quotable answer (AEO/GEO) and closes with an FAQ (FAQPage schema).
+
+export const LANDING_PAGES = [
+  {
+    path: '/travel-billing-software',
+    keyword: 'Travel Billing Software',
+    metaTitle: 'Travel Billing Software for Travel Agencies | Travel Bill Pro',
+    metaDescription: 'Travel billing software for Indian travel agencies and cab operators. Create GST invoices in 10 seconds, track payments and share bills on WhatsApp. Book a free demo.',
+    h1: 'Travel Billing Software',
+    h1Accent: 'built for Indian travel businesses.',
+    answer: 'Travel billing software is an application that creates invoices for trips, tours and vehicle rentals automatically from booking data. It calculates fares, adds tolls and driver allowances, applies the correct GST, and tracks every payment until it is collected. Travel Bill Pro is travel billing software made for travel agencies, cab operators and fleet owners in India.',
+    intro: 'Most travel businesses still bill from notebooks and Excel. Every month that means retyping trips, calculating CGST and SGST by hand and chasing customers for payment on the phone. Travel Bill Pro turns a completed trip into a correct, branded GST invoice in about ten seconds.',
+    benefits: [
+      { title: 'GST invoices in 10 seconds', desc: 'CGST, SGST or IGST is applied automatically from the place of supply, with SAC codes and your invoice series.' },
+      { title: 'Every billing model', desc: 'Per-km, per-hour, packages, outstation, airport transfers and monthly corporate statements are all supported.' },
+      { title: 'Tolls, parking and bata', desc: 'Add toll, parking, night charges and driver allowance to any trip without manual calculations.' },
+      { title: 'Get paid faster', desc: 'Every invoice carries a UPI QR code and can be sent on WhatsApp or email the moment a trip closes.' },
+      { title: 'Payments and outstanding', desc: 'See who has paid, who is overdue and how much is outstanding per customer, in real time.' },
+      { title: 'CA-ready GST reports', desc: 'Export GSTR-1 ready data and monthly sales registers for your chartered accountant in one click.' },
+    ],
+    sections: [
+      {
+        h2: 'What should travel billing software do?',
+        paras: ['Good travel billing software removes every manual step between a finished trip and money in your bank. When you compare options, check that it handles the realities of Indian travel billing, not just generic invoicing.'],
+        bullets: [
+          'Create invoices directly from bookings and trip sheets, without retyping',
+          'Calculate GST correctly for intra-state (CGST + SGST) and inter-state (IGST) trips',
+          'Support per-km, hourly, package and monthly B2B billing',
+          'Add tolls, parking, night charges and driver bata to the bill',
+          'Share invoices on WhatsApp and collect payment through UPI',
+          'Track outstanding payments and send reminders',
+          'Export GST reports for your accountant',
+        ],
+      },
+      {
+        h2: 'How Travel Bill Pro handles billing, step by step',
+        paras: ['A booking is created with the customer, route, vehicle and rate. When the driver ends the trip, kilometres, time, tolls and parking are recorded. Travel Bill Pro then calculates the fare, applies GST and creates a numbered tax invoice. The invoice is shared on WhatsApp with a UPI QR code, and the payment is matched against it when it arrives. Everything flows into your customer ledger and GST reports automatically.'],
+      },
+      {
+        h2: 'Billing for corporate clients and B2B agents',
+        paras: ['Corporate accounts usually want one invoice per month listing every trip, with duty slips and cost-centre details. Travel Bill Pro groups trips by client and period and produces a single monthly statement and GST invoice, while keeping the trip-level detail your client needs for approvals.'],
+      },
+    ],
+    faq: [
+      { q: 'What is the best travel billing software in India?', a: 'The best travel billing software for an Indian travel business is one that creates GST-compliant invoices from trip data, supports per-km, package and monthly corporate billing, and tracks payments. Travel Bill Pro is built specifically for travel agencies, cab operators and fleet owners in India and does all of this in one platform.' },
+      { q: 'Can travel billing software create GST invoices automatically?', a: 'Yes. Travel Bill Pro creates GST tax invoices automatically when a trip is closed, applying CGST and SGST or IGST based on the place of supply and adding the SAC code, invoice number and your business details.' },
+      { q: 'Is there free travel billing software?', a: 'Travel Bill Pro offers a free live demo and a Starter plan from ₹999 per month for up to 5 vehicles, which costs less than the time most businesses spend on manual billing.' },
+      { q: 'Can I send travel invoices on WhatsApp?', a: 'Yes. Every invoice can be shared on WhatsApp or email in one tap, or automatically when a trip ends, with a UPI QR code so the customer can pay immediately.' },
+    ],
+    related: ['/travel-agency-software', '/travel-billing-management-software', '/blog/gst-invoice-format-for-travel-agencies'],
+  },
+  {
+    path: '/travel-agency-software',
+    keyword: 'Travel Agency Software',
+    metaTitle: 'Travel Agency Software: Bookings, GST & CRM | Travel Bill Pro',
+    metaDescription: 'All-in-one travel agency software for India: bookings, GST billing, customer CRM, vendors, fleet and driver payroll in one dashboard. Works on desktop, tablet and mobile.',
+    h1: 'Travel Agency Software',
+    h1Accent: 'that runs your whole business.',
+    answer: 'Travel agency software is a business management system that helps a travel agency handle bookings, customers, vendors, billing, payments and reports from one place. Travel Bill Pro is travel agency software for Indian tour operators, cab agencies and corporate travel companies, combining bookings, GST billing, CRM and fleet management in a single dashboard.',
+    intro: 'A growing travel agency juggles enquiries on WhatsApp, bookings in a register, vendor bills in a file and accounts in Excel. Travel agency software replaces those scattered tools with one connected system, so your team works faster and you always know where the business stands.',
+    benefits: [
+      { title: 'Bookings and itineraries', desc: 'Take bookings by phone, WhatsApp or web, assign vehicles and drivers, and avoid double-booking.' },
+      { title: 'Customer CRM', desc: 'Keep every customer, trip history, preference and outstanding balance in one profile.' },
+      { title: 'Vendor management', desc: 'Track hotels, attached vehicles, fuel and partner operators with a running ledger for each.' },
+      { title: 'GST billing built in', desc: 'Turn bookings into GST invoices instantly, including tour packages and monthly corporate bills.' },
+      { title: 'Team roles and access', desc: 'Give booking staff, accountants and branch managers only the access they need.' },
+      { title: 'Reports that matter', desc: 'See revenue, profit per trip and per vehicle, and your best customers and routes.' },
+    ],
+    sections: [
+      {
+        h2: 'Who uses travel agency software?',
+        paras: ['Travel Bill Pro is used by tour agencies selling packages, taxi and cab operators, tempo traveller owners, corporate and employee transport providers, school transport operators, airport taxi services and luxury car rental businesses. Each gets the same connected platform, configured for how they bill.'],
+      },
+      {
+        h2: 'Features to look for in travel agency software',
+        paras: ['Before choosing software, make sure it covers the full journey from enquiry to payment, not just one part of it.'],
+        bullets: [
+          'Booking management with vehicle and driver assignment',
+          'Customer and B2B agent management with ledgers',
+          'Vendor and supplier tracking',
+          'GST invoicing, receipts and credit notes',
+          'Payment tracking with reminders',
+          'Role-based access for staff and multiple branches',
+          'Access from desktop, tablet and mobile, with cloud backup',
+        ],
+      },
+      {
+        h2: 'Cloud-based, so your agency works from anywhere',
+        paras: ['Travel Bill Pro runs in the cloud. Your office team uses it on a desktop, the front desk on a tablet and owners on their phone. All you need is an internet connection, and every change syncs instantly across devices.'],
+      },
+    ],
+    faq: [
+      { q: 'What is travel agency software?', a: 'Travel agency software is a system that manages a travel agency\'s bookings, customers, vendors, invoices, payments and reports in one place, replacing registers, Excel sheets and separate apps.' },
+      { q: 'Which software is best for a small travel agency?', a: 'A small travel agency should choose software that is simple to learn, priced for its size and covers bookings, GST billing and payments together. Travel Bill Pro starts at ₹999 per month and can be set up in about ten minutes.' },
+      { q: 'Does travel agency software work on mobile?', a: 'Travel Bill Pro works in any modern browser on desktop, tablet and mobile, so owners and staff can take bookings and create bills from anywhere with an internet connection.' },
+      { q: 'Can I manage multiple branches?', a: 'Yes. The Enterprise plan supports multiple branches with separate invoice series, staff permissions and consolidated reports.' },
+    ],
+    related: ['/travel-billing-software', '/travel-billing-management-software', '/blog/how-to-choose-travel-agency-software'],
+  },
+  {
+    path: '/travel-billing-management-software',
+    keyword: 'Travel Billing Management Software',
+    metaTitle: 'Travel Billing Management Software | Travel Bill Pro',
+    metaDescription: 'Travel billing management software to control invoices, payments, outstanding dues, expenses and GST reports for travel agencies and cab operators. Try a free demo.',
+    h1: 'Travel Billing Management Software',
+    h1Accent: 'for every rupee you earn.',
+    answer: 'Travel billing management software goes beyond creating invoices. It manages the full billing cycle of a travel business: invoices, receipts, outstanding payments, customer and vendor ledgers, expenses and GST reporting. Travel Bill Pro is travel billing management software that gives Indian travel businesses complete control of their billing and cash flow.',
+    intro: 'Creating an invoice is only the start. The real work is making sure every trip is billed, every invoice is paid and every rupee of GST is reported correctly. Travel Bill Pro manages the entire cycle, so nothing slips through the cracks.',
+    benefits: [
+      { title: 'No unbilled trips', desc: 'Every closed trip is billed automatically, so no revenue is lost to forgotten invoices.' },
+      { title: 'Outstanding at a glance', desc: 'See overdue invoices by customer and age, and send WhatsApp reminders in one tap.' },
+      { title: 'Customer and vendor ledgers', desc: 'Running balances for every customer, agent and vendor, always up to date.' },
+      { title: 'Expense tracking', desc: 'Record fuel, tolls, maintenance, EMIs and salaries to see real profit per vehicle.' },
+      { title: 'Receipts and credit notes', desc: 'Issue payment receipts, adjust invoices with credit notes and keep a clean audit trail.' },
+      { title: 'GST reconciliation', desc: 'Monthly GST summaries with CGST, SGST and IGST split, ready for filing.' },
+    ],
+    sections: [
+      {
+        h2: 'The travel billing cycle, managed end to end',
+        paras: ['Travel billing management covers five stages: capturing the trip, creating the invoice, delivering it, collecting payment and reporting it. Travel Bill Pro connects all five, so data entered once flows through to your ledgers and GST reports without retyping.'],
+        bullets: ['Capture: booking and trip sheet with kilometres, time, tolls and allowances', 'Invoice: GST tax invoice created automatically', 'Deliver: shared on WhatsApp or email with a UPI QR code', 'Collect: payment recorded and matched, reminders for overdue bills', 'Report: ledgers, profit and GST summaries updated instantly'],
+      },
+      {
+        h2: 'Why spreadsheets fail at billing management',
+        paras: ['Excel can list invoices, but it cannot stop duplicate invoice numbers, calculate GST by place of supply, remind customers or reconcile payments. As a business grows, errors multiply and month-end takes days. Dedicated travel billing management software keeps the numbers correct by design.'],
+      },
+      {
+        h2: 'Cash-flow visibility for owners',
+        paras: ['Owners see today\'s revenue, pending payments and profit on their phone every morning. AI insights flag late payers and idle vehicles, so decisions are based on real numbers instead of guesswork.'],
+      },
+    ],
+    faq: [
+      { q: 'What is travel billing management software?', a: 'Travel billing management software manages the complete billing cycle of a travel business, including invoices, receipts, outstanding payments, ledgers, expenses and GST reports, rather than only creating invoices.' },
+      { q: 'How is billing management different from invoicing?', a: 'Invoicing creates the bill. Billing management also tracks whether it was paid, follows up on overdue amounts, maintains customer and vendor ledgers and produces GST and profit reports.' },
+      { q: 'Can it track outstanding payments from corporate clients?', a: 'Yes. Travel Bill Pro shows outstanding amounts by client and invoice age and can send automatic WhatsApp payment reminders.' },
+      { q: 'Is my billing data secure?', a: 'Data is encrypted in transit and at rest, backed up daily in the cloud and protected with role-based access for your staff.' },
+    ],
+    related: ['/travel-billing-software', '/travel-agency-software', '/blog/travel-billing-software-vs-excel'],
+  },
+]

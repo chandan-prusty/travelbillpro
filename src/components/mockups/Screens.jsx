@@ -14,7 +14,7 @@ const Kpi = ({ label, value, delta, tone = 'green', icon: I, spark, sub }) => (
     <div className="flex items-end justify-between gap-2">
       <div>
         <div className="font-display text-[20px] leading-none font-semibold tracking-tight">{value}</div>
-        {sub && <div className="mt-1 text-[10px] text-slate-400">{sub}</div>}
+        {sub && <div className="mt-1 text-[10px] text-slate-500">{sub}</div>}
       </div>
       {spark && <div className="h-7 w-20"><Sparkline data={spark} color={tone === 'amber' ? '#F59E0B' : '#6a08db'} /></div>}
     </div>
@@ -35,7 +35,7 @@ export function DashboardScreen() {
       <div className="grid min-h-0 flex-1 grid-cols-3 gap-3.5">
         <Panel className="col-span-2 flex flex-col">
           <div className="flex items-center justify-between">
-            <div><div className="text-[12px] font-semibold">Revenue overview</div><div className="text-[10.5px] text-slate-400">This month vs last month</div></div>
+            <div><div className="text-[12px] font-semibold">Revenue overview</div><div className="text-[10.5px] text-slate-500">This month vs last month</div></div>
             <div className="flex gap-1 rounded-lg bg-slate-100 p-0.5 text-[10px] font-semibold"><span className="rounded-md bg-white px-2 py-1 shadow-sm">30D</span><span className="px-2 py-1 text-slate-500">90D</span><span className="px-2 py-1 text-slate-500">1Y</span></div>
           </div>
           <div className="mt-2 min-h-0 flex-1">
@@ -45,10 +45,10 @@ export function DashboardScreen() {
         </Panel>
         <Panel className="flex flex-col">
           <div className="text-[12px] font-semibold">Vehicle availability</div>
-          <div className="text-[10.5px] text-slate-400">48 vehicles in fleet</div>
+          <div className="text-[10.5px] text-slate-500">48 vehicles in fleet</div>
           <div className="flex flex-1 items-center gap-3">
             <Donut size={104} stroke={14} segments={[{ value: 27, color: '#6a08db' }, { value: 15, color: '#A66CFF' }, { value: 6, color: '#F59E0B' }]}>
-              <div className="font-display text-[18px] font-semibold">87%</div><div className="text-[9px] text-slate-400">utilised</div>
+              <div className="font-display text-[18px] font-semibold">87%</div><div className="text-[9px] text-slate-500">utilised</div>
             </Donut>
             <ul className="flex flex-col gap-1.5 text-[10.5px]">
               <li className="flex items-center gap-1.5"><span className="size-2 rounded-full bg-[#6a08db]" />On trip · 27</li>
@@ -85,7 +85,7 @@ export function DashboardScreen() {
             <div key={n} className="flex items-center gap-2 py-1">
               <span className={`size-2 rounded-full ${t === 'green' ? 'bg-emerald-500' : t === 'blue' ? 'bg-sky-500' : 'bg-slate-300'}`} />
               <span className="text-[10.5px] font-semibold">{n}</span>
-              <span className="ml-auto text-[10px] text-slate-400">{s}</span>
+              <span className="ml-auto text-[10px] text-slate-500">{s}</span>
             </div>
           ))}
         </Panel>
@@ -111,7 +111,7 @@ export function BookingsScreen() {
       <div className="grid grid-cols-7 gap-2">
         {days.map((d, i) => (
           <div key={d} className={`rounded-xl border px-3 py-2 ${i === 2 ? 'border-transparent bg-navy text-white' : 'border-slate-200 bg-white'}`}>
-            <div className={`text-[10px] ${i === 2 ? 'text-slate-300' : 'text-slate-400'}`}>{d.split(' ')[0]}</div>
+            <div className={`text-[10px] ${i === 2 ? 'text-slate-300' : 'text-slate-500'}`}>{d.split(' ')[0]}</div>
             <div className="font-display text-[16px] font-semibold">{d.split(' ')[1]}</div>
             <div className={`text-[9.5px] font-semibold ${i === 2 ? 'text-violet-300' : 'text-teal'}`}>{[5, 8, 6, 7, 9, 4, 3][i]} trips</div>
           </div>
@@ -120,14 +120,14 @@ export function BookingsScreen() {
       <div className="grid min-h-0 flex-1 grid-cols-3 gap-3.5">
         <Panel className="col-span-2 !p-0">
           <table className="w-full text-left text-[10.5px]">
-            <thead className="text-[10px] text-slate-400"><tr><th className="px-3.5 py-2.5 font-medium">Time</th><th className="font-medium">Customer & Route</th><th className="font-medium">Vehicle</th><th className="font-medium">Driver</th><th className="pr-3.5 text-right font-medium">Status</th></tr></thead>
+            <thead className="text-[10px] text-slate-500"><tr><th className="px-3.5 py-2.5 font-medium">Time</th><th className="font-medium">Customer & Route</th><th className="font-medium">Vehicle</th><th className="font-medium">Driver</th><th className="pr-3.5 text-right font-medium">Status</th></tr></thead>
             <tbody>
               {rows.map(([t, c, r, v, d, tone, st]) => (
                 <tr key={t} className="border-t border-slate-100">
                   <td className="px-3.5 py-2.5 font-semibold">{t}</td>
-                  <td className="py-2.5"><div className="font-semibold">{c}</div><div className="text-slate-400">{r}</div></td>
-                  <td className="py-2.5 pr-2"><div className="font-medium text-slate-600">{v.split(' · ')[0]}</div><div className="text-slate-400">{v.split(' · ')[1] || 'Assigned'}</div></td>
-                  <td className={`py-2.5 ${d === 'Unassigned' ? 'font-semibold text-amber-600' : ''}`}>{d}</td>
+                  <td className="py-2.5"><div className="font-semibold">{c}</div><div className="text-slate-500">{r}</div></td>
+                  <td className="py-2.5 pr-2"><div className="font-medium text-slate-600">{v.split(' · ')[0]}</div><div className="text-slate-500">{v.split(' · ')[1] || 'Assigned'}</div></td>
+                  <td className={`py-2.5 ${d === 'Unassigned' ? 'font-semibold text-amber-700' : ''}`}>{d}</td>
                   <td className="py-2.5 pr-3.5 text-right"><Chip tone={tone}>{st}</Chip></td>
                 </tr>
               ))}
@@ -147,7 +147,7 @@ export function BookingsScreen() {
           <div className="flex flex-col gap-2 text-[10.5px]">
             <div className="flex gap-2"><MapPin className="size-3.5 text-emerald-600" /><span><b>Pickup</b> · Begumpet, 06:30</span></div>
             <div className="flex gap-2"><MapPin className="size-3.5 text-navy" /><span><b>Drop</b> · RGIA Terminal 1</span></div>
-            <div className="flex gap-2"><Phone className="size-3.5 text-slate-400" /><span>Srinivas R. · Innova Crysta</span></div>
+            <div className="flex gap-2"><Phone className="size-3.5 text-slate-500" /><span>Srinivas R. · Innova Crysta</span></div>
           </div>
           <div className="mt-auto flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"><span className="text-slate-500">Fare (incl. toll)</span><b className="font-display text-[14px]">₹2,450</b></div>
         </Panel>
@@ -177,7 +177,7 @@ export function InvoicesScreen() {
       </div>
       <Panel className="min-h-0 flex-1 !p-0">
         <table className="w-full text-left text-[10.5px]">
-          <thead className="text-[10px] text-slate-400"><tr><th className="px-3.5 py-2.5 font-medium">Invoice #</th><th className="font-medium">Customer</th><th className="font-medium">Date</th><th className="font-medium">Taxable</th><th className="font-medium">CGST</th><th className="font-medium">SGST/IGST</th><th className="pr-3.5 text-right font-medium">Status</th></tr></thead>
+          <thead className="text-[10px] text-slate-500"><tr><th className="px-3.5 py-2.5 font-medium">Invoice #</th><th className="font-medium">Customer</th><th className="font-medium">Date</th><th className="font-medium">Taxable</th><th className="font-medium">CGST</th><th className="font-medium">SGST/IGST</th><th className="pr-3.5 text-right font-medium">Status</th></tr></thead>
           <tbody>
             {rows.map(([n, c, d, t, cg, sg, tone, st]) => (
               <tr key={n} className="border-t border-slate-100">
@@ -218,7 +218,7 @@ export function DriversScreen() {
           <Panel key={n} className="flex flex-col gap-2.5">
             <div className="flex items-center gap-2.5">
               <span className={`flex size-9 items-center justify-center rounded-full bg-gradient-to-br ${g} text-[11px] font-bold text-white`}>{ini}</span>
-              <div><div className="text-[12px] font-semibold">{n}</div><div className="text-[10px] text-slate-400">{car}</div></div>
+              <div><div className="text-[12px] font-semibold">{n}</div><div className="text-[10px] text-slate-500">{car}</div></div>
               <span className="ml-auto"><Chip tone={tone}>{st}</Chip></span>
             </div>
             <div>
@@ -252,7 +252,7 @@ export function ExpensesScreen() {
           <div className="text-[12px] font-semibold">By category</div>
           <div className="flex items-center justify-center py-1">
             <Donut size={140} stroke={18} segments={cats.map((c) => ({ value: c[1], color: c[2] }))}>
-              <div className="text-[9.5px] text-slate-400">Total</div><div className="font-display text-[17px] font-semibold">₹7.84L</div>
+              <div className="text-[9.5px] text-slate-500">Total</div><div className="font-display text-[17px] font-semibold">₹7.84L</div>
             </Donut>
           </div>
           {cats.map(([n, v, c, I]) => (
@@ -260,7 +260,7 @@ export function ExpensesScreen() {
               <span className="flex size-6 items-center justify-center rounded-md" style={{ background: c + '1f', color: c }}><I className="size-3.5" /></span>
               <span className="font-medium">{n}</span>
               <span className="ml-auto font-semibold">₹{v.toLocaleString('en-IN')}</span>
-              <span className="w-9 text-right text-slate-400">{Math.round((v / total) * 100)}%</span>
+              <span className="w-9 text-right text-slate-500">{Math.round((v / total) * 100)}%</span>
             </div>
           ))}
         </Panel>
@@ -273,7 +273,7 @@ export function ExpensesScreen() {
             {[['HP Petrol Pump, Kukatpally', 'Fuel · TS09EA4521', '₹4,850', Fuel], ['Sri Sai Motors', 'Service · Swift Dzire', '₹7,200', Wrench], ['ORR Toll Plaza', 'Toll · Tempo Traveller', '₹385', Route], ['ICICI Lombard', 'Insurance · Innova', '₹38,400', Calendar]].map(([n, s, a, I]) => (
               <div key={n} className="flex items-center gap-2.5 border-b border-slate-100 px-3.5 py-2.5 last:border-0">
                 <span className="flex size-7 items-center justify-center rounded-lg bg-slate-100 text-slate-600"><I className="size-3.5" /></span>
-                <div><div className="text-[11px] font-semibold">{n}</div><div className="text-[10px] text-slate-400">{s}</div></div>
+                <div><div className="text-[11px] font-semibold">{n}</div><div className="text-[10px] text-slate-500">{s}</div></div>
                 <span className="ml-auto text-[11px] font-semibold">{a}</span>
               </div>
             ))}
@@ -307,7 +307,7 @@ export function ReportsScreen() {
             <div key={k} className="flex justify-between border-b border-dashed border-slate-200 pb-1.5 text-[10.5px]"><span className="text-slate-500">{k}</span><b>{v}</b></div>
           ))}
           <div className="flex justify-between rounded-lg bg-violet-50 px-2.5 py-2 text-[11px]"><span className="font-semibold text-violet-800">Net payable</span><b className="text-violet-800">₹92,040</b></div>
-          <div className="mt-auto text-[10px] text-slate-400">GSTR-1 & 3B ready · Export in one click</div>
+          <div className="mt-auto text-[10px] text-slate-500">GSTR-1 & 3B ready · Export in one click</div>
         </Panel>
       </div>
     </AppShell>
@@ -331,8 +331,8 @@ export function CrmScreen() {
           {list.map(([n, s, bal, r, active]) => (
             <div key={n} className={`flex items-center gap-2.5 border-b border-slate-100 px-3.5 py-3 last:border-0 ${active ? 'bg-violet-50/70' : ''}`}>
               <span className="flex size-8 items-center justify-center rounded-full bg-navy text-[10px] font-bold text-white">{n.split(' ').map((x) => x[0]).slice(0, 2).join('')}</span>
-              <div className="min-w-0"><div className="truncate text-[11.5px] font-semibold">{n}</div><div className="text-[10px] text-slate-400">{s}</div></div>
-              <div className="ml-auto text-right"><div className={`text-[11px] font-semibold ${bal === '₹0' ? 'text-emerald-600' : 'text-amber-600'}`}>{bal}</div>
+              <div className="min-w-0"><div className="truncate text-[11.5px] font-semibold">{n}</div><div className="text-[10px] text-slate-500">{s}</div></div>
+              <div className="ml-auto text-right"><div className={`text-[11px] font-semibold ${bal === '₹0' ? 'text-emerald-600' : 'text-amber-700'}`}>{bal}</div>
                 <div className="flex justify-end">{Array.from({ length: r }).map((_, i) => <Star key={i} className="size-2.5 fill-gold text-gold" />)}</div></div>
             </div>
           ))}
@@ -340,18 +340,18 @@ export function CrmScreen() {
         <Panel className="col-span-3 flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <span className="flex size-11 items-center justify-center rounded-xl bg-brand-gradient font-display text-[14px] font-bold text-ink">CS</span>
-            <div><div className="font-display text-[15px] font-semibold">Cyberlink Solutions Pvt Ltd</div><div className="text-[10.5px] text-slate-400">GSTIN 36AAFCC9812K1ZQ · Hitech City, Hyderabad</div></div>
+            <div><div className="font-display text-[15px] font-semibold">Cyberlink Solutions Pvt Ltd</div><div className="text-[10.5px] text-slate-500">GSTIN 36AAFCC9812K1ZQ · Hitech City, Hyderabad</div></div>
             <span className="ml-auto"><Chip tone="green">Monthly billing</Chip></span>
           </div>
           <div className="grid grid-cols-3 gap-2.5">
             {[['Lifetime value', '₹14.8L'], ['Trips this month', '46'], ['Avg. pay time', '6 days']].map(([k, v]) => (
-              <div key={k} className="rounded-lg bg-slate-50 px-3 py-2"><div className="text-[10px] text-slate-400">{k}</div><div className="font-display text-[15px] font-semibold">{v}</div></div>
+              <div key={k} className="rounded-lg bg-slate-50 px-3 py-2"><div className="text-[10px] text-slate-500">{k}</div><div className="font-display text-[15px] font-semibold">{v}</div></div>
             ))}
           </div>
           <div className="h-[110px]"><AreaChart data={[12, 18, 15, 22, 26, 24, 31, 35, 33, 40]} w={500} h={110} color="#A66CFF" /></div>
           <div className="text-[11px] font-semibold">Recent activity</div>
           {[['Invoice INV/25-26/0312 paid via UPI', '2h ago'], ['Airport drop · Gachibowli → RGIA', 'Today 06:10'], ['Monthly statement shared on WhatsApp', 'Yesterday']].map(([t, w]) => (
-            <div key={t} className="flex items-center gap-2 text-[10.5px]"><span className="size-1.5 rounded-full bg-emerald-500" />{t}<span className="ml-auto text-slate-400">{w}</span></div>
+            <div key={t} className="flex items-center gap-2 text-[10.5px]"><span className="size-1.5 rounded-full bg-emerald-500" />{t}<span className="ml-auto text-slate-500">{w}</span></div>
           ))}
         </Panel>
       </div>

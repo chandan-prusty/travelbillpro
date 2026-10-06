@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react(), tailwindcss()],
   // Fixed port so this site never collides with other local projects on Vite's default 5173
   server: { port: 5180, strictPort: true },
@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     target: 'es2020',
     cssCodeSplit: true,
-    rollupOptions: {
+    rollupOptions: isSsrBuild ? {} : {
       output: {
         manualChunks: {
           react: ['react', 'react-dom', 'react-router-dom'],
@@ -19,4 +19,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))

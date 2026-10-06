@@ -12,7 +12,7 @@
   --color-canvas: #f4f7fb;
   --color-ink-900: #111827;
   --color-ink-700: #374151;
-  --color-ink-500: #6b7280; /* 4.8:1 on white, 4.5:1 on canvas */
+  --color-ink-500: #5b6472; /* 6.2:1 on white, 5.8:1 on canvas */
 
   /* Single accent: brand violet — white text passes AA (5:1) */
   --color-accent: #6a08db; /* white text 8.4:1 */

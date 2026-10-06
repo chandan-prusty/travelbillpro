@@ -1,8 +1,16 @@
 {
-  "name": "Travel Bill Pro",
-  "short_name": "TravelBillPro",
-  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
-  "theme_color": "#0F172A",
-  "background_color": "#F8FAFC",
-  "display": "standalone"
+  "name": "Travel Bill Pro — Travel Billing Software",
+  "short_name": "Travel Bill Pro",
+  "description": "Travel billing and travel agency software for India.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#6A08DB",
+  "background_color": "#F4F7FB",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
 }

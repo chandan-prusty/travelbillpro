@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, m } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import {
   ArrowRight, Check, ShieldCheck, NotebookPen, FileSpreadsheet, Calculator, MessageCircle, Receipt,
   PhoneCall, CalendarCheck, ReceiptIndianRupee, Car, Wallet, Database, Zap, ChartColumn, Plus, Star, Play,
@@ -11,16 +12,17 @@ import { FEATURES, STATS, TESTIMONIALS, FAQ, PRICING } from '../data/content'
 import { SITE } from '../data/site'
 
 /* ============ Page header (inner pages) ============ */
-export function PageHeader({ pill, title, accent, sub, children }) {
+export function PageHeader({ pill, title, accent, sub, children, breadcrumb }) {
   return (
-    <section className="pt-36 pb-10 sm:pt-44 sm:pb-14">
+    <section className="pt-32 pb-10 sm:pt-40 sm:pb-14">
       <div className="container-x flex flex-col items-center text-center">
-        {pill && <Reveal className="pill"><span className="size-2 rounded-full bg-accent" />{pill}</Reveal>}
-        <Reveal as="h1" delay={0.05} className="mt-7 max-w-4xl text-[40px] sm:text-6xl">
+        {breadcrumb}
+        {pill && <span className="pill"><span className="size-2 rounded-full bg-accent" aria-hidden="true" />{pill}</span>}
+        <h1 className="mt-7 max-w-4xl text-[40px] sm:text-6xl">
           {title}{accent && <><br /><span className="text-accent">{accent}</span></>}
-        </Reveal>
-        {sub && <Reveal as="p" delay={0.1} className="mt-6 max-w-2xl text-lg text-ink-700 sm:text-xl">{sub}</Reveal>}
-        {children && <Reveal delay={0.15} className="mt-9 flex flex-col gap-3 sm:flex-row">{children}</Reveal>}
+        </h1>
+        {sub && <p className="mt-6 max-w-2xl text-lg text-ink-700 sm:text-xl">{sub}</p>}
+        {children && <div className="mt-9 flex flex-col gap-3 sm:flex-row">{children}</div>}
       </div>
     </section>
   )
@@ -33,17 +35,15 @@ export function Hero() {
   return (
     <section className="pt-36 sm:pt-44">
       <div className="container-x flex flex-col items-center text-center">
-        <m.span className="pill" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: EASE }}>
-          <span className="size-2 rounded-full bg-accent" />{SITE.tagline}
-        </m.span>
-        <m.h1 className="mt-8 text-[42px] leading-[1.08] sm:text-6xl lg:text-[72px]" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.05, ease: EASE }}>
+        <span className="pill"><span className="size-2 rounded-full bg-accent" aria-hidden="true" />Travel Billing Software · {SITE.tagline}</span>
+        <h1 className="mt-8 text-[42px] leading-[1.08] sm:text-6xl lg:text-[72px]">
           Manage Your Entire Travel Business
           <span className="mt-2 block min-h-[2.3em] text-accent sm:min-h-[1.15em]"><Typewriter words={HERO_WORDS} /></span>
-        </m.h1>
-        <m.p className="mt-8 max-w-2xl text-lg text-ink-700 sm:text-xl" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15, ease: EASE }}>
-          Say goodbye to registers and Excel sheets. Travel Bill Pro brings <b className="font-medium text-ink-900">bookings</b>, <b className="font-medium text-ink-900">GST invoices</b>, <b className="font-medium text-ink-900">fleet</b>, <b className="font-medium text-ink-900">driver payroll</b> and <b className="font-medium text-ink-900">reports</b> into one beautifully simple platform.
-        </m.p>
-        <m.div className="mt-10 flex flex-col items-center gap-4" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25, ease: EASE }}>
+        </h1>
+        <p className="mt-8 max-w-2xl text-lg text-ink-700 sm:text-xl">
+          Say goodbye to registers and Excel sheets. Travel Bill Pro is <Link to="/travel-billing-software" className="text-accent underline underline-offset-4 hover:decoration-2">travel billing software</Link> that brings <b className="font-medium text-ink-900">bookings</b>, <b className="font-medium text-ink-900">GST invoices</b>, <b className="font-medium text-ink-900">fleet</b>, <b className="font-medium text-ink-900">driver payroll</b> and <b className="font-medium text-ink-900">reports</b> into one beautifully simple platform.
+        </p>
+        <div className="mt-10 flex flex-col items-center gap-4">
           <div className="flex flex-col items-center gap-3 sm:flex-row">
             <Button to="/demo" className="!min-h-14 !px-8 text-[17px]">Start Free Demo <ArrowRight className="size-5" aria-hidden="true" /></Button>
             <Button href="#video" variant="secondary" className="!min-h-14 !px-6 text-[17px]">
@@ -52,7 +52,7 @@ export function Hero() {
             </Button>
           </div>
           <p className="flex items-center gap-2 text-sm text-ink-500"><ShieldCheck className="size-4 text-accent" aria-hidden="true" />No credit card required · Set up in 10 minutes</p>
-        </m.div>
+        </div>
       </div>
       <ModuleMarquee />
       <div className="container-x mt-6">
@@ -86,7 +86,10 @@ export function VideoTour() {
               </video>
             ) : (
               <button onClick={() => setPlaying(true)} className="group absolute inset-0 h-full w-full" aria-label="Play the 30-second Travel Bill Pro product tour (with sound)">
-                <img src={VIDEO.poster} alt="" width="1280" height="720" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                <picture>
+                  <source srcSet="/media/travel-bill-pro-tour-poster.webp" type="image/webp" />
+                  <img src={VIDEO.poster} alt="Travel Bill Pro product tour: booking confirmed, driver assigned and payment marked paid" width="1280" height="720" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                </picture>
                 <span className="absolute inset-0 bg-ink-900/10 transition-colors duration-300 group-hover:bg-ink-900/20" aria-hidden="true" />
                 <span className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center" aria-hidden="true">
                   <span className="absolute size-24 animate-ping rounded-full bg-accent/25 motion-reduce:hidden" />
@@ -331,16 +334,14 @@ export function PricingCards() {
 }
 
 /* ============ FAQ ============ */
-export function FAQList() {
+export function FAQList({ items = FAQ, title = 'Frequently asked questions' }) {
   const [open, setOpen] = useState(0)
-  const schema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
   return (
     <section id="faq" className="section scroll-mt-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="container-x max-w-3xl">
-        <SectionTitle title="Frequently asked questions" />
+        <SectionTitle title={title} />
         <div className="mt-12 flex flex-col gap-3">
-          {FAQ.map((f, i) => {
+          {items.map((f, i) => {
             const isOpen = open === i
             return (
               <Reveal key={f.q} delay={Math.min(i, 4) * 0.04} className="surface overflow-hidden">

@@ -1,6 +1,7 @@
 # Dependencies & build output
 node_modules/
 dist/
+dist-ssr/
 
 # Environment (e.g. VITE_LEAD_ENDPOINT)
 .env

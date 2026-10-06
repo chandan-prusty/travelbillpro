@@ -1,5 +1,4 @@
 import { Check, Minus } from 'lucide-react'
-import { Seo } from '../components/Layout'
 import { Reveal } from '../components/ui'
 import { PageHeader, PricingCards, SectionTitle, FAQList, CTABlock } from '../components/blocks'
 
@@ -17,10 +16,8 @@ const Cell = ({ v }) => v === '✓' ? <Check className="mx-auto size-5 text-acce
 export default function Pricing() {
   return (
     <>
-      <Seo title="Pricing — Plans from ₹999/month" path="/pricing"
-        description="Transparent Travel Bill Pro pricing: Starter ₹999/month, Professional ₹2,499/month, and custom Enterprise plans with white label, multi-branch and API access." />
       <PageHeader pill="Pricing" title="Simple pricing," accent="no surprises." sub="Start small and upgrade anytime. Every plan includes free onboarding, Excel import and mobile apps." />
-      <section className="pb-20 sm:pb-28"><div className="container-x"><PricingCards /></div></section>
+      <section className="pb-20 sm:pb-28" aria-labelledby="plans-title"><div className="container-x"><h2 id="plans-title" className="sr-only">Travel Bill Pro plans</h2><PricingCards /></div></section>
 
       <section className="section !pt-0">
         <div className="container-x">

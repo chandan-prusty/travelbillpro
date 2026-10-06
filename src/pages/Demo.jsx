@@ -1,6 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Check, Clock, Video, Languages } from 'lucide-react'
-import { Seo } from '../components/Layout'
 import { Reveal } from '../components/ui'
 import { LeadForm } from '../components/forms'
 
@@ -21,14 +20,15 @@ function nextWorkingDays(n) {
 }
 
 export default function Demo() {
-  const days = useMemo(() => nextWorkingDays(6), [])
+  // Dates depend on the visitor's clock, so compute them after mount (prerendered HTML can't know today's date).
+  const [days, setDays] = useState([])
+  useEffect(() => setDays(nextWorkingDays(6)), [])
   const [day, setDay] = useState(0)
   const [slot, setSlot] = useState(null)
-  const dayLabel = days[day].toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' })
+  const dayLabel = days[day]?.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) ?? ''
 
   return (
     <>
-      <Seo title="Book a Free Demo" path="/demo" description="Book a free 30-minute live demo of Travel Bill Pro. See GST billing, bookings, fleet and driver payroll tailored to your travel business." />
       <section className="pt-36 pb-20 sm:pt-44 sm:pb-28">
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <div>
@@ -47,7 +47,7 @@ export default function Demo() {
 
           <Reveal delay={0.1} className="surface p-6 sm:p-10">
             <h2 className="text-2xl">Pick a time <span className="text-base text-ink-500">(IST)</span></h2>
-            <div className="no-scrollbar -mx-1 mt-5 flex gap-2 overflow-x-auto px-1 pb-1" role="radiogroup" aria-label="Demo date">
+            <div className="no-scrollbar -mx-1 mt-5 flex min-h-[88px] gap-2 overflow-x-auto px-1 pb-1" role="radiogroup" aria-label="Demo date">
               {days.map((d, i) => (
                 <button key={d.toISOString()} role="radio" aria-checked={day === i} onClick={() => setDay(i)}
                   className={`flex min-w-[68px] shrink-0 flex-col items-center rounded-2xl px-3 py-3 transition ${day === i ? 'bg-accent text-white shadow-[var(--shadow-accent)]' : 'bg-canvas text-ink-900 hover:text-accent'}`}>

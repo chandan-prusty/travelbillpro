@@ -1,4 +1,3 @@
-import { Seo } from '../components/Layout'
 import { SITE } from '../data/site'
 
 function LegalLayout({ title, updated, children }) {
@@ -17,7 +16,6 @@ function LegalLayout({ title, updated, children }) {
 export function Privacy() {
   return (
     <>
-      <Seo title="Privacy Policy" path="/privacy" description="How Travel Bill Pro collects, uses, stores and protects your business and personal data." />
       <LegalLayout title="Privacy Policy" updated="1 September 2025">
         <p>Travel Bill Pro ("we", "us", "our") provides cloud software for travel businesses in India. This policy explains what information we collect, why we collect it and how we protect it, in line with the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000.</p>
         <h2>1. Information we collect</h2>
@@ -56,7 +54,6 @@ export function Privacy() {
 export function Terms() {
   return (
     <>
-      <Seo title="Terms & Conditions" path="/terms" description="Terms and conditions for using the Travel Bill Pro website and software subscription." />
       <LegalLayout title="Terms & Conditions" updated="1 September 2025">
         <p>These terms govern your use of the Travel Bill Pro website and software ("Service"). By creating an account or using the Service, you agree to these terms.</p>
         <h2>1. Subscription & billing</h2>

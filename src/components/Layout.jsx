@@ -20,20 +20,32 @@ export function Logo({ className = '' }) {
   )
 }
 
-/* ---------- SEO: updates tags present in index.html ---------- */
-export function Seo({ title, description, path = '/' }) {
+/* ---------- Head tags on client-side navigation (static HTML already has them from prerender) ---------- */
+function setTag(selector, create, attr, value) {
+  let el = document.head.querySelector(selector)
+  if (!value) { el?.remove(); return }
+  if (!el) { el = create(); document.head.appendChild(el) }
+  el.setAttribute(attr, value)
+}
+const metaEl = (key, val) => () => { const m = document.createElement('meta'); m.setAttribute(key, val); return m }
+
+function RouteHead() {
+  const { pathname } = useLocation()
   useEffect(() => {
-    const full = title ? `${title} | Travel Bill Pro` : 'Travel Bill Pro — GST Billing & Travel ERP Software for Travel Agencies'
-    document.title = full
-    const set = (sel, attr, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute(attr, val) }
-    set('meta[name="description"]', 'content', description)
-    set('meta[property="og:title"]', 'content', full)
-    set('meta[name="twitter:title"]', 'content', full)
-    set('meta[property="og:description"]', 'content', description)
-    set('meta[name="twitter:description"]', 'content', description)
-    set('meta[property="og:url"]', 'content', SITE.url + path)
-    set('link[rel="canonical"]', 'href', SITE.url + path)
-  }, [title, description, path])
+    let live = true
+    // Loaded on demand: the first page already has its head from the prerendered HTML.
+    import('../seo/meta').then(({ getHead }) => {
+    if (!live) return
+    const h = getHead(pathname.replace(/\/+$/, '') || '/')
+    document.title = h.title
+    setTag('meta[name="description"]', metaEl('name', 'description'), 'content', h.description)
+    setTag('meta[name="robots"]', metaEl('name', 'robots'), 'content', h.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1')
+    setTag('link[rel="canonical"]', () => { const l = document.createElement('link'); l.rel = 'canonical'; return l }, 'href', h.canonical)
+    for (const [k, v] of [['og:title', h.title], ['og:description', h.description], ['og:url', h.canonical], ['og:type', h.ogType]]) setTag(`meta[property="${k}"]`, metaEl('property', k), 'content', v)
+    for (const [k, v] of [['twitter:title', h.title], ['twitter:description', h.description]]) setTag(`meta[name="${k}"]`, metaEl('name', k), 'content', v)
+    })
+    return () => { live = false }
+  }, [pathname])
   return null
 }
 
@@ -72,7 +84,7 @@ function Navbar() {
           ))}
         </ul>
         <div className="hidden items-center gap-3 lg:flex">
-          <Button href={SITE.loginUrl} variant="secondary" className="!min-h-10 !px-5 text-sm">Log In</Button>
+          <Button to={SITE.loginUrl} variant="secondary" className="!min-h-10 !px-5 text-sm">Log In</Button>
           <Button to="/demo" className="!min-h-10 !px-5 text-sm">Book Demo</Button>
         </div>
         <button className="inline-flex size-11 items-center justify-center rounded-xl bg-white text-ink-900 shadow-[var(--shadow-soft)] lg:hidden"
@@ -97,7 +109,7 @@ function Navbar() {
             </ul>
             <div className="container-x mt-6 flex flex-col gap-3 pb-10">
               <Button to="/demo" className="w-full !min-h-12">Book Free Demo</Button>
-              <Button href={SITE.loginUrl} variant="secondary" className="w-full !min-h-12">Log In</Button>
+              <Button to={SITE.loginUrl} variant="secondary" className="w-full !min-h-12">Log In</Button>
             </div>
           </m.div>
         )}
@@ -108,15 +120,16 @@ function Navbar() {
 
 /* ---------- Footer ---------- */
 const FOOTER = [
-  { title: 'Product', links: [['GST Billing', '/features#billing'], ['Bookings & Trips', '/features'], ['Fleet & Drivers', '/features#fleet'], ['Reports', '/features#reports'], ['Pricing', '/pricing']] },
-  { title: 'Solutions', links: [['Taxi Operators', '/solutions'], ['Tour Agencies', '/solutions'], ['Corporate Travel', '/solutions'], ['Fleet Owners', '/solutions']] },
-  { title: 'Company', links: [['About Us', '/about'], ['Contact', '/contact'], ['Book a Demo', '/demo'], ['FAQs', '/pricing#faq']] },
+  { title: 'Product', links: [['Features', '/features'], ['GST Billing', '/features#billing'], ['All Modules', '/features#modules'], ['Works on Every Device', '/features#devices'], ['Pricing', '/pricing']] },
+  { title: 'Software', links: [['Travel Billing Software', '/travel-billing-software'], ['Travel Agency Software', '/travel-agency-software'], ['Travel Billing Management Software', '/travel-billing-management-software'], ['Solutions by Business', '/solutions']] },
+  { title: 'Resources', links: [['Blog & Guides', '/blog'], ['GST Invoice Format', '/blog/gst-invoice-format-for-travel-agencies'], ['Software vs Excel', '/blog/travel-billing-software-vs-excel'], ['FAQs', '/pricing#faq']] },
+  { title: 'Company', links: [['About Us', '/about'], ['Contact', '/contact'], ['Book a Demo', '/demo']] },
 ]
 
 function Footer() {
   return (
     <footer className="bg-white pb-24 lg:pb-0">
-      <div className="container-x grid gap-12 py-16 md:grid-cols-[1.3fr_2fr]">
+      <div className="container-x grid gap-12 py-16 lg:grid-cols-[1fr_2.4fr]">
         <div>
           <Logo />
           <p className="mt-2 text-xs tracking-wider text-ink-500 uppercase">{SITE.tagline}</p>
@@ -126,7 +139,7 @@ function Footer() {
             <li><a href={SITE.whatsappHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-ink-900 hover:text-accent"><WhatsAppIcon className="size-4 text-[#128C4B]" />WhatsApp {SITE.phoneDisplay}</a></li>
           </ul>
           <div className="mt-6 flex gap-2">
-            {Object.entries(SITE.social).map(([k, href]) => (
+            {Object.entries(SITE.social).filter(([, href]) => href).map(([k, href]) => (
               <a key={k} href={href} target="_blank" rel="noopener noreferrer" aria-label={`Travel Bill Pro on ${k === 'x' ? 'X' : k[0].toUpperCase() + k.slice(1)}`}
                 className="inline-flex size-10 items-center justify-center rounded-full bg-canvas text-ink-500 transition hover:text-accent">
                 <SocialIcon name={k} />
@@ -134,10 +147,10 @@ function Footer() {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {FOOTER.map((col) => (
             <div key={col.title}>
-              <h3 className="text-[16px] font-medium">{col.title}</h3>
+              <h2 className="text-[16px] font-medium tracking-normal">{col.title}</h2>
               <ul className="mt-5 flex flex-col gap-3 text-[15px]">
                 {col.links.map(([label, to]) => (
                   <li key={label}><Link to={to} className="text-ink-500 transition-colors hover:text-accent">{label}</Link></li>
@@ -145,7 +158,7 @@ function Footer() {
               </ul>
             </div>
           ))}
-        </div>
+        </nav>
       </div>
       <div className="container-x">
         <div className="flex flex-col items-center justify-between gap-4 border-t border-ink-900/8 py-7 text-sm text-ink-500 sm:flex-row">
@@ -205,6 +218,7 @@ export default function Layout() {
     <>
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
       <ScrollManager />
+      <RouteHead />
       <Navbar />
       <main id="main" className="min-h-[70vh]">
         <Suspense fallback={<div className="min-h-[80vh]" role="status" aria-label="Loading page" />}>

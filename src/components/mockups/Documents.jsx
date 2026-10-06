@@ -31,24 +31,24 @@ export function InvoiceDoc() {
       </div>
       <div className="mt-5 grid grid-cols-2 gap-4 rounded-xl bg-slate-50 p-3.5">
         <div>
-          <div className="text-[9.5px] font-semibold tracking-wide text-slate-400 uppercase">Billed to</div>
+          <div className="text-[9.5px] font-semibold tracking-wide text-slate-500 uppercase">Billed to</div>
           <div className="mt-0.5 font-semibold">Cyberlink Solutions Pvt Ltd</div>
           <div className="text-[10px] text-slate-500">Hitech City, Hyderabad · GSTIN 36AAFCC9812K1ZQ</div>
         </div>
         <div className="text-right">
-          <div className="text-[9.5px] font-semibold tracking-wide text-slate-400 uppercase">Place of supply</div>
+          <div className="text-[9.5px] font-semibold tracking-wide text-slate-500 uppercase">Place of supply</div>
           <div className="mt-0.5 font-semibold">Telangana (36)</div>
           <div className="text-[10px] text-slate-500">Due: 04 Oct 2025</div>
         </div>
       </div>
       <table className="mt-4 w-full text-left">
-        <thead className="border-b border-slate-200 text-[9.5px] tracking-wide text-slate-400 uppercase">
+        <thead className="border-b border-slate-200 text-[9.5px] tracking-wide text-slate-500 uppercase">
           <tr><th className="pb-2 font-semibold">Description</th><th className="pb-2 font-semibold">SAC</th><th className="pb-2 text-center font-semibold">Qty</th><th className="pb-2 text-right font-semibold">Amount</th></tr>
         </thead>
         <tbody>
           {items.map(([d, s, sac, q, r]) => (
             <tr key={d} className="border-b border-slate-100">
-              <td className="py-2"><div className="font-medium">{d}</div><div className="text-[9.5px] text-slate-400">{s}</div></td>
+              <td className="py-2"><div className="font-medium">{d}</div><div className="text-[9.5px] text-slate-500">{s}</div></td>
               <td className="py-2 text-slate-500">{sac}</td>
               <td className="py-2 text-center">{q}</td>
               <td className="py-2 text-right font-semibold">{f(q * r)}</td>
@@ -62,7 +62,7 @@ export function InvoiceDoc() {
           <div>
             <div className="text-[10px] font-semibold">Pay via UPI</div>
             <div className="text-[9.5px] text-slate-500">deccancabs@okhdfcbank</div>
-            <div className="mt-1 text-[9px] text-slate-400">GPay · PhonePe · Paytm · BHIM</div>
+            <div className="mt-1 text-[9px] text-slate-500">GPay · PhonePe · Paytm · BHIM</div>
           </div>
         </div>
         <div className="w-[210px] text-[10.5px]">
@@ -72,7 +72,7 @@ export function InvoiceDoc() {
           <div className="mt-1.5 flex justify-between rounded-lg bg-navy px-3 py-2 text-[12px] font-bold text-white"><span>Total</span><span>{f(total)}</span></div>
         </div>
       </div>
-      <div className="mt-4 border-t border-dashed border-slate-200 pt-2.5 text-[9.5px] text-slate-400">
+      <div className="mt-4 border-t border-dashed border-slate-200 pt-2.5 text-[9.5px] text-slate-500">
         Computer-generated invoice. Rent-a-cab service under SAC 996601 · GST @ 5% without ITC.
       </div>
     </div>

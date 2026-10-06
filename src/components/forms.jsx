@@ -109,7 +109,7 @@ export function LeadForm({ extra, submitLabel = 'Book Free Demo' }) {
       <Button type="submit" disabled={status === 'sending'} className="w-full !min-h-13 text-base disabled:opacity-70">
         {status === 'sending' ? <><Loader2 className="size-5 animate-spin" aria-hidden="true" />Sending…</> : <>{submitLabel}<ArrowRight className="size-4" aria-hidden="true" /></>}
       </Button>
-      <p className="text-center text-xs text-ink-500">By submitting you agree to our <Link to="/privacy" className="text-accent hover:underline">Privacy Policy</Link>. We never share your data.</p>
+      <p className="text-center text-xs text-ink-500">By submitting you agree to our <Link to="/privacy" className="text-accent underline underline-offset-2">Privacy Policy</Link>. We never share your data.</p>
     </form>
   )
 }

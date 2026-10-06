@@ -15,7 +15,7 @@ const StatusBar = ({ dark }) => (
 const TabBar = ({ active = 0 }) => (
   <div className="absolute inset-x-0 bottom-0 flex h-16 items-start justify-around border-t border-slate-100 bg-white/95 pt-2.5 backdrop-blur">
     {[Home, CalendarCheck, Receipt, User].map((I, i) => (
-      <span key={i} className={`flex flex-col items-center gap-0.5 text-[9px] font-semibold ${i === active ? 'text-teal' : 'text-slate-400'}`}>
+      <span key={i} className={`flex flex-col items-center gap-0.5 text-[9px] font-semibold ${i === active ? 'text-teal' : 'text-slate-500'}`}>
         <I className="size-5" strokeWidth={i === active ? 2.2 : 1.8} />
         {['Home', 'Trips', 'Invoices', 'Profile'][i]}
       </span>
@@ -30,11 +30,11 @@ export function MobileDashboard() {
       <div className="bg-navy pb-16 text-white">
         <StatusBar dark />
         <div className="flex items-center justify-between px-5 pt-2">
-          <div><div className="text-[10px] text-slate-400">Deccan Cabs</div><div className="font-display text-[15px] font-semibold">Hi, Ravi</div></div>
+          <div><div className="text-[10px] text-slate-500">Deccan Cabs</div><div className="font-display text-[15px] font-semibold">Hi, Ravi</div></div>
           <span className="relative flex size-8 items-center justify-center rounded-full bg-white/10"><Bell className="size-4" /><span className="absolute top-1.5 right-2 size-1.5 rounded-full bg-gold" /></span>
         </div>
         <div className="px-5 pt-4">
-          <div className="text-[10px] text-slate-400">Today's revenue</div>
+          <div className="text-[10px] text-slate-500">Today's revenue</div>
           <div className="font-display text-[26px] leading-tight font-semibold">₹1,84,250</div>
           <div className="text-[10px] font-semibold text-emerald-300">▲ 12.4% vs yesterday</div>
         </div>
@@ -44,10 +44,10 @@ export function MobileDashboard() {
           <div className="h-[70px]"><AreaChart data={[4, 6, 5, 8, 7, 9, 8, 12]} w={240} h={70} grid={false} /></div>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2.5">
-          {[['Active trips', '27', Route, 'text-violet-700 bg-violet-50'], ['Pending', '₹3.4L', Clock, 'text-amber-600 bg-amber-50']].map(([k, v, I, c]) => (
+          {[['Active trips', '27', Route, 'text-violet-700 bg-violet-50'], ['Pending', '₹3.4L', Clock, 'text-amber-700 bg-amber-50']].map(([k, v, I, c]) => (
             <div key={k} className="rounded-2xl bg-white p-3 shadow-sm">
               <span className={`inline-flex size-7 items-center justify-center rounded-lg ${c}`}><I className="size-3.5" /></span>
-              <div className="mt-1.5 text-[10px] text-slate-400">{k}</div>
+              <div className="mt-1.5 text-[10px] text-slate-500">{k}</div>
               <div className="font-display text-[16px] font-semibold">{v}</div>
             </div>
           ))}
@@ -86,12 +86,12 @@ export function MobileDriverTrip() {
         <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-slate-200" />
         <div className="flex items-center justify-between"><div className="font-display text-[14px] font-semibold">Trip TBP-2419</div><span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[9.5px] font-bold text-emerald-700">In progress</span></div>
         <div className="mt-3 flex flex-col gap-2.5 text-[10.5px]">
-          <div className="flex gap-2"><MapPin className="size-4 text-emerald-600" /><div><b>Begumpet</b><div className="text-slate-400">Picked up 06:28</div></div></div>
-          <div className="flex gap-2"><Navigation className="size-4 text-navy" /><div><b>RGIA Airport, Terminal 1</b><div className="text-slate-400">Drop · Flight 6E 5214</div></div></div>
+          <div className="flex gap-2"><MapPin className="size-4 text-emerald-600" /><div><b>Begumpet</b><div className="text-slate-500">Picked up 06:28</div></div></div>
+          <div className="flex gap-2"><Navigation className="size-4 text-navy" /><div><b>RGIA Airport, Terminal 1</b><div className="text-slate-500">Drop · Flight 6E 5214</div></div></div>
         </div>
         <div className="mt-3 grid grid-cols-3 gap-2 text-center">
           {[['Start KM', '48,210'], ['Toll', '₹120'], ['Parking', '₹60']].map(([k, v]) => (
-            <div key={k} className="rounded-xl bg-slate-50 py-2"><div className="text-[9px] text-slate-400">{k}</div><div className="text-[11px] font-bold">{v}</div></div>
+            <div key={k} className="rounded-xl bg-slate-50 py-2"><div className="text-[9px] text-slate-500">{k}</div><div className="text-[11px] font-bold">{v}</div></div>
           ))}
         </div>
         <div className="mt-3 flex gap-2">
@@ -109,7 +109,7 @@ export function MobilePayment() {
     <div className="relative h-[590px] w-[280px] overflow-hidden bg-[#F6F8FB] font-sans text-navy">
       <StatusBar />
       <div className="px-5 pt-2">
-        <div className="text-[10px] text-slate-400">Invoice</div>
+        <div className="text-[10px] text-slate-500">Invoice</div>
         <div className="font-display text-[15px] font-semibold">INV/25-26/0312</div>
       </div>
       <div className="mx-4 mt-3 rounded-2xl bg-white p-4 shadow-sm">
@@ -123,7 +123,7 @@ export function MobilePayment() {
       <div className="mx-4 mt-3 flex flex-col items-center rounded-2xl bg-white p-4 shadow-sm">
         <div className="mb-2 text-[10.5px] font-semibold">Scan to pay with any UPI app</div>
         <QrArt size={116} />
-        <div className="mt-2 text-[9.5px] text-slate-400">deccancabs@okhdfcbank</div>
+        <div className="mt-2 text-[9.5px] text-slate-500">deccancabs@okhdfcbank</div>
       </div>
       <div className="mx-4 mt-3 flex h-11 items-center justify-center gap-1.5 rounded-xl bg-[#25D366] text-[11px] font-semibold text-white"><WhatsAppIcon className="size-4" /> Share on WhatsApp</div>
       <TabBar active={2} />

@@ -1,5 +1,4 @@
 import { Check, Download, Mail } from 'lucide-react'
-import { Seo } from '../components/Layout'
 import { Button, Reveal, WhatsAppIcon } from '../components/ui'
 import { PageHeader, FeatureGrid, ProductTabs, SectionTitle, CTABlock } from '../components/blocks'
 import { DeviceShowcase } from '../components/devices'
@@ -10,8 +9,6 @@ import { FEATURES, MODULES, INTEGRATIONS, SECURITY } from '../data/content'
 export default function Features() {
   return (
     <>
-      <Seo title="Features — GST Billing, Fleet, Driver Payroll & CRM" path="/features"
-        description="Explore Travel Bill Pro features: booking management, one-click GST invoices, fleet tracking, driver payroll, customer CRM, WhatsApp automation and AI reports." />
       <PageHeader pill="Features" title="Every tool you need," accent="nothing you don't."
         sub="From the first booking call to the final GST return, beautifully connected in one platform.">
         <Button to="/demo" className="!min-h-12 !px-7">Book Free Demo</Button>

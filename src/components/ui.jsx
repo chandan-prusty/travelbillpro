@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { m, useInView, animate, useReducedMotion } from 'framer-motion'
 
@@ -52,17 +52,26 @@ export function Typewriter({ words, className = '' }) {
   )
 }
 
-/* ---------- Counter ---------- */
+/* ---------- Counter ----------
+   Server HTML shows the real value (good for crawlers/no-JS). On the client, if the number
+   is still off-screen it resets to 0 before paint and counts up when scrolled into view. */
 export function Counter({ value, prefix = '', suffix = '', decimals = 0 }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
   const reduce = useReducedMotion()
-  const [n, setN] = useState(reduce ? value : 0)
+  const [n, setN] = useState(value)
+  const armed = useRef(false)
+  useLayoutEffect(() => {
+    if (reduce || !ref.current) return
+    const r = ref.current.getBoundingClientRect()
+    if (r.top > window.innerHeight) { armed.current = true; setN(0) }
+  }, [reduce])
   useEffect(() => {
-    if (!inView || reduce) return
+    if (!inView || !armed.current) return
+    armed.current = false
     const c = animate(0, value, { duration: 1.6, ease: EASE, onUpdate: setN })
     return () => c.stop()
-  }, [inView, value, reduce])
+  }, [inView, value])
   return <span ref={ref} className="tabular-nums">{prefix}{n.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}{suffix}</span>
 }
 

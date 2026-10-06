@@ -75,7 +75,7 @@ const SIDEBAR = [
 export function AppShell({ active = 'dashboard', title, subtitle, action, children }) {
   return (
     <div className="flex h-[625px] w-[1000px] bg-[#F4F7FB] font-sans text-[12px] text-[#111827]">
-      <aside className="flex w-[176px] shrink-0 flex-col px-3 py-4 text-[#6B7280]">
+      <aside className="flex w-[176px] shrink-0 flex-col px-3 py-4 text-[#5B6472]">
         <div className="mb-5 flex items-center gap-2 px-2">
           <span className="inline-flex size-7 items-center justify-center rounded-lg bg-[#6a08db]">
             <svg viewBox="0 0 32 32" className="size-4"><path d="M8 9h16M16 9v15" stroke="#fff" strokeWidth="3.6" strokeLinecap="round" /><circle cx="24" cy="22" r="3" fill="#F59E0B" /></svg>
@@ -99,10 +99,10 @@ export function AppShell({ active = 'dashboard', title, subtitle, action, childr
       <div className="flex min-w-0 flex-1 flex-col py-3 pr-3">
         <div className="flex min-h-0 flex-1 flex-col rounded-2xl bg-white/60">
         <header className="flex h-[52px] shrink-0 items-center gap-3 px-5">
-          <div className="flex h-8 w-[260px] items-center gap-2 rounded-lg bg-white px-3 text-[#9CA3AF] shadow-[0_2px_8px_-4px_rgb(17_24_39/0.12)]"><Search className="size-3.5" /> Search trips, invoices, drivers…</div>
+          <div className="flex h-8 w-[260px] items-center gap-2 rounded-lg bg-white px-3 text-[#5B6472] shadow-[0_2px_8px_-4px_rgb(17_24_39/0.12)]"><Search className="size-3.5" /> Search trips, invoices, drivers…</div>
           <div className="ml-auto flex items-center gap-3">
             <span className="flex items-center gap-1.5 rounded-full bg-[#F3EAFE] px-2.5 py-1 text-[10.5px] font-medium text-[#6a08db]"><span className="size-1.5 rounded-full bg-[#6a08db]" /> Live</span>
-            <span className="relative"><Bell className="size-4 text-[#6B7280]" /><span className="absolute -top-1 -right-1 size-2 rounded-full bg-gold ring-2 ring-white" /></span>
+            <span className="relative"><Bell className="size-4 text-[#5B6472]" /><span className="absolute -top-1 -right-1 size-2 rounded-full bg-gold ring-2 ring-white" /></span>
             <span className="flex size-7 items-center justify-center rounded-full bg-[#111827] text-[11px] font-semibold text-white">RK</span>
           </div>
         </header>
@@ -111,7 +111,7 @@ export function AppShell({ active = 'dashboard', title, subtitle, action, childr
             <div className="flex items-end justify-between">
               <div>
                 <div className="text-[17px] font-medium">{title}</div>
-                {subtitle && <div className="text-[11px] text-[#6B7280]">{subtitle}</div>}
+                {subtitle && <div className="text-[11px] text-[#5B6472]">{subtitle}</div>}
               </div>
               {action}
             </div>
