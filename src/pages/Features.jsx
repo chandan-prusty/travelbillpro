@@ -46,7 +46,7 @@ export default function Features() {
       <section id="modules" className="section scroll-mt-20">
         <div className="container-x">
           <SectionTitle title="20+ modules," accent="one database." sub="Switch on what you need today and add more as you grow." />
-          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-14 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
             {MODULES.map(({ icon: I, name }, i) => (
               <Reveal key={name} delay={(i % 5) * 0.04} className="surface flex items-center gap-3 px-4 py-4">
                 <span className="icon-circle !size-10 shrink-0"><I className="size-[18px]" strokeWidth={1.7} aria-hidden="true" /></span>

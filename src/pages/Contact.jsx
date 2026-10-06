@@ -13,7 +13,7 @@ export default function Contact() {
             {CONTACT_CARDS.map(({ icon: I, label, value, href, ext }, i) => {
               const inner = (<>
                 <span className="icon-circle shrink-0"><I className="size-5" aria-hidden="true" /></span>
-                <div className="min-w-0"><div className="text-sm text-ink-500">{label}</div><div className="truncate text-[17px]">{value}</div></div>
+                <div className="min-w-0"><div className="text-sm text-ink-500">{label}</div><div className="text-[17px]">{value.includes('@') ? <>{value.split('@')[0]}@<wbr />{value.split('@')[1]}</> : value}</div></div>
               </>)
               return (
                 <Reveal key={label} delay={i * 0.05}>

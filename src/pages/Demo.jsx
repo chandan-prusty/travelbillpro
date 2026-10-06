@@ -29,11 +29,11 @@ export default function Demo() {
 
   return (
     <>
-      <section className="pt-36 pb-20 sm:pt-44 sm:pb-28">
+      <section className="pt-36 pb-20 sm:pt-44 sm:pb-28 [@media(max-height:500px)]:pt-24">
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           <div>
             <Reveal className="pill"><span className="size-2 rounded-full bg-accent" />Free live demo</Reveal>
-            <Reveal as="h1" delay={0.05} className="mt-7 text-[40px] sm:text-[56px]">See Travel Bill Pro<br /><span className="text-accent">run your business.</span></Reveal>
+            <Reveal as="h1" delay={0.05} className="mt-7 text-[32px] min-[360px]:text-[40px] sm:text-[56px]">See Travel Bill Pro<br /><span className="text-accent">run your business.</span></Reveal>
             <Reveal as="p" delay={0.1} className="mt-6 text-lg text-ink-700">A 30-minute, one-on-one session with a product specialist. No sales pressure, just your workflow on a better system.</Reveal>
             <Reveal as="ul" delay={0.15} className="mt-8 flex flex-col gap-4">
               {AGENDA.map((a) => <li key={a} className="flex gap-3 text-ink-700"><Check className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden="true" />{a}</li>)}
@@ -57,7 +57,7 @@ export default function Demo() {
                 </button>
               ))}
             </div>
-            <div className="mt-3 grid grid-cols-3 gap-2" role="radiogroup" aria-label="Demo time">
+            <div className="mt-3 grid grid-cols-2 gap-2 min-[360px]:grid-cols-3" role="radiogroup" aria-label="Demo time">
               {SLOTS.map((s) => (
                 <button key={s} role="radio" aria-checked={slot === s} onClick={() => setSlot(s)}
                   className={`min-h-11 rounded-xl text-[15px] transition ${slot === s ? 'bg-accent-soft text-accent shadow-[inset_0_0_0_1.5px_var(--color-accent)]' : 'bg-canvas text-ink-700 hover:text-accent'}`}>{s}</button>

@@ -8,7 +8,7 @@ import { Button, WhatsAppIcon, SocialIcon, EASE } from './ui'
 /* ---------- Logo (brand artwork: public/brand/) ---------- */
 export function Logo({ className = '' }) {
   return (
-    <Link to="/" className={`inline-flex shrink-0 items-center ${className}`} aria-label="Travel Bill Pro home">
+    <Link to="/" className={`inline-flex min-h-11 shrink-0 items-center py-1 ${className}`} aria-label="Travel Bill Pro home">
       <picture>
         <source srcSet="/brand/travel-bill-pro-logo-680.webp" type="image/webp" />
         <img src="/brand/travel-bill-pro-logo-680.png" alt="Travel Bill Pro" width="680" height="165"
@@ -71,11 +71,11 @@ function Navbar() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled || open ? 'bg-canvas/90 shadow-[0_1px_0_rgb(17_24_39/0.06)] backdrop-blur-md' : 'bg-transparent'}`}>
       <nav className="container-x flex h-20 items-center justify-between gap-6" aria-label="Main">
         <Logo />
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-6 lg:flex xl:gap-8">
           {NAV.map((n) => (
             <li key={n.to}>
               <NavLink to={n.to} end={n.to === '/'}
-                className={({ isActive }) => `relative py-2 text-[16px] transition-colors ${isActive ? 'text-accent after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[2px] after:rounded-full after:bg-accent' : 'text-ink-700 hover:text-ink-900'}`}>
+                className={({ isActive }) => `relative inline-flex min-h-11 items-center text-[16px] transition-colors ${isActive ? 'text-accent after:absolute after:inset-x-0 after:bottom-1.5 after:h-[2px] after:rounded-full after:bg-accent' : 'text-ink-700 hover:text-ink-900'}`}>
                 {n.label}
               </NavLink>
             </li>
@@ -159,12 +159,12 @@ function Footer() {
         </nav>
       </div>
       <div className="container-x">
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-ink-900/8 py-7 text-sm text-ink-500 sm:flex-row">
-          <p>© {new Date().getFullYear()} Travel Bill Pro · {SITE.location}</p>
-          <div className="flex gap-6">
-            <Link to="/privacy" className="hover:text-accent">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-accent">Terms & Conditions</Link>
-            <a href={`mailto:${SITE.email}`} className="hover:text-accent">{SITE.email}</a>
+        <div className="flex flex-col items-center justify-between gap-2 border-t border-ink-900/8 py-5 text-sm text-ink-500 md:flex-row md:gap-4">
+          <p className="text-center">© {new Date().getFullYear()} Travel Bill Pro · {SITE.location}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6">
+            <Link to="/privacy" className="inline-flex min-h-11 items-center hover:text-accent">Privacy Policy</Link>
+            <Link to="/terms" className="inline-flex min-h-11 items-center hover:text-accent">Terms & Conditions</Link>
+            <a href={`mailto:${SITE.email}`} className="inline-flex min-h-11 items-center break-all hover:text-accent">{SITE.email}</a>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function Blog() {
               </p>
               <h2 className="mt-4 text-2xl"><Link to={a.path} className="hover:text-accent">{a.title}</Link></h2>
               <p className="mt-3 flex-1 text-ink-700">{a.excerpt}</p>
-              <Link to={a.path} className="mt-6 inline-flex items-center gap-1.5 text-accent" aria-label={`Read: ${a.title}`}>Read guide <ArrowRight className="size-4" aria-hidden="true" /></Link>
+              <Link to={a.path} className="mt-4 inline-flex min-h-11 items-center gap-1.5 self-start text-accent" aria-label={`Read: ${a.title}`}>Read guide <ArrowRight className="size-4" aria-hidden="true" /></Link>
             </article>
           ))}
         </div>

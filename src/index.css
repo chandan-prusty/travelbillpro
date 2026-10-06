@@ -49,6 +49,11 @@
 
 @layer base {
   html, body { overflow-x: clip; }
+  /* Responsive safety net: a grid's default track may not grow past the screen because of wide content
+     (nowrap text, scroll rows). Breakpoint grid-cols-* utilities still override this. */
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  img, video, svg, canvas { max-width: 100%; }
+  h1, h2, h3, p, li, a, span, td, th { overflow-wrap: break-word; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     @apply bg-canvas font-sans text-ink-900 antialiased;

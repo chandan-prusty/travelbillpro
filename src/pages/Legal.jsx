@@ -2,7 +2,7 @@ import { SITE } from '../data/site'
 
 function LegalLayout({ title, updated, children }) {
   return (
-    <article className="pt-36 pb-20 sm:pt-44 sm:pb-28">
+    <article className="pt-36 pb-20 sm:pt-44 sm:pb-28 [@media(max-height:500px)]:pt-24">
       <div className="container-x max-w-3xl">
         <span className="pill"><span className="size-2 rounded-full bg-accent" />Legal</span>
         <h1 className="mt-7 text-4xl sm:text-5xl">{title}</h1>

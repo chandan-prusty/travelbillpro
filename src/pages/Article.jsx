@@ -15,10 +15,10 @@ export default function Article() {
   return (
     <>
       <article>
-        <header className="pt-32 pb-10 sm:pt-40">
+        <header className="pt-32 pb-10 sm:pt-40 [@media(max-height:500px)]:pt-24">
           <div className="container-x max-w-3xl text-center">
             <Breadcrumbs path={a.path} />
-            <h1 className="text-[36px] sm:text-5xl">{a.title}</h1>
+            <h1 className="text-[28px] min-[360px]:text-[36px] sm:text-5xl">{a.title}</h1>
             <p className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm whitespace-nowrap text-ink-500">
               <span>By Travel Bill Pro team</span><span aria-hidden="true">·</span>
               <time dateTime={a.published}>{fmt(a.published)}</time><span aria-hidden="true">·</span>

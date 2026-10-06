@@ -14,11 +14,11 @@ import { SITE } from '../data/site'
 /* ============ Page header (inner pages) ============ */
 export function PageHeader({ pill, title, accent, sub, children, breadcrumb }) {
   return (
-    <section className="pt-32 pb-10 sm:pt-40 sm:pb-14">
+    <section className="pt-32 pb-10 sm:pt-40 sm:pb-14 [@media(max-height:500px)]:pt-24">
       <div className="container-x flex flex-col items-center text-center">
         {breadcrumb}
         {pill && <span className="pill"><span className="size-2 rounded-full bg-accent" aria-hidden="true" />{pill}</span>}
-        <h1 className="mt-7 max-w-4xl text-[40px] sm:text-6xl">
+        <h1 className="mt-7 max-w-4xl text-[32px] min-[360px]:text-[40px] sm:text-6xl">
           {title}{accent && <><br /><span className="text-accent">{accent}</span></>}
         </h1>
         {sub && <p className="mt-6 max-w-2xl text-lg text-ink-700 sm:text-xl">{sub}</p>}
@@ -33,10 +33,10 @@ const HERO_WORDS = ['In One Dashboard', 'With One-Click GST', 'Across Every Vehi
 
 export function Hero() {
   return (
-    <section className="pt-36 sm:pt-44">
+    <section className="pt-36 sm:pt-44 [@media(max-height:500px)]:pt-24">
       <div className="container-x flex flex-col items-center text-center">
-        <span className="pill"><span className="size-2 rounded-full bg-accent" aria-hidden="true" />Travel Billing Software · {SITE.tagline}</span>
-        <h1 className="mt-8 text-[42px] leading-[1.08] sm:text-6xl lg:text-[72px]">
+        <span className="pill"><span className="size-2 shrink-0 rounded-full bg-accent" aria-hidden="true" /><span className="sm:hidden">Travel Billing Software</span><span className="hidden sm:inline">Travel Billing Software · {SITE.tagline}</span></span>
+        <h1 className="mt-8 text-[34px] leading-[1.08] min-[360px]:text-[42px] sm:text-6xl lg:text-[72px]">
           Manage Your Entire Travel Business
           <span className="mt-2 block min-h-[2.3em] text-accent sm:min-h-[1.15em]"><Typewriter words={HERO_WORDS} /></span>
         </h1>
@@ -51,7 +51,7 @@ export function Hero() {
               Watch the 30-sec video
             </Button>
           </div>
-          <p className="flex items-center gap-2 text-sm text-ink-500"><ShieldCheck className="size-4 text-accent" aria-hidden="true" />No credit card required · Set up in 10 minutes</p>
+          <p className="text-center text-sm text-ink-500"><ShieldCheck className="mr-1.5 inline size-4 align-[-3px] text-accent" aria-hidden="true" />No credit card required · Set up in 10 minutes</p>
         </div>
       </div>
       <ModuleMarquee />
@@ -196,7 +196,7 @@ export function WhyChoose() {
         <SectionTitle title="Why choose Travel Bill Pro?" sub="Everything you need to run your travel business smoothly, built for how India actually travels." />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {WHY.map(([I, t, d], i) => (
-            <Reveal key={t} delay={i * 0.08} className="surface flex flex-col items-center px-8 py-10 text-center">
+            <Reveal key={t} delay={i * 0.08} className="surface flex flex-col items-center px-6 py-8 text-center sm:px-8 sm:py-10">
               <span className="icon-circle"><I className="size-5" strokeWidth={1.7} aria-hidden="true" /></span>
               <h3 className="mt-6 text-xl">{t}</h3>
               <p className="mt-3 text-[15px] text-ink-700">{d}</p>
@@ -216,7 +216,7 @@ export function FeatureGrid({ items = FEATURES, title = 'Everything your travel 
         <SectionTitle title={title} accent={accent} sub={sub} />
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map(({ icon: I, title: t, desc }, i) => (
-            <Reveal key={t} delay={(i % 3) * 0.06} className="surface group p-8 transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]">
+            <Reveal key={t} delay={(i % 3) * 0.06} className="surface group p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] sm:p-8">
               <span className="icon-circle transition-colors group-hover:bg-accent group-hover:text-white"><I className="size-5" strokeWidth={1.7} aria-hidden="true" /></span>
               <h3 className="mt-6 text-xl">{t}</h3>
               <p className="mt-3 text-[15px] text-ink-700">{desc}</p>
@@ -288,7 +288,7 @@ export function Testimonials({ count = 3 }) {
         <SectionTitle title="Loved by travel operators" accent="across India" />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {TESTIMONIALS.slice(0, count).map((t, i) => (
-            <Reveal as="figure" key={t.name} delay={i * 0.08} className="surface flex flex-col p-8">
+            <Reveal as="figure" key={t.name} delay={i * 0.08} className="surface flex flex-col p-6 sm:p-8">
               <div className="flex gap-0.5" role="img" aria-label="Rated 5 out of 5">{Array.from({ length: 5 }).map((_, s) => <Star key={s} className="size-4 fill-gold text-gold" aria-hidden="true" />)}</div>
               <blockquote className="mt-5 flex-1 text-[16px] text-ink-700">“{t.quote}”</blockquote>
               <figcaption className="mt-8 flex items-center gap-3">
@@ -308,7 +308,7 @@ export function PricingCards() {
   return (
     <div className="mx-auto grid max-w-6xl items-start gap-6 lg:grid-cols-3">
       {PRICING.map((p, i) => (
-        <Reveal key={p.name} delay={i * 0.08} className={`relative flex h-full flex-col rounded-[24px] p-8 sm:p-10 ${p.highlight ? 'bg-accent text-white shadow-[var(--shadow-accent)]' : 'surface'}`}>
+        <Reveal key={p.name} delay={i * 0.08} className={`relative flex h-full flex-col rounded-[24px] p-6 min-[360px]:p-8 sm:p-10 ${p.highlight ? 'bg-accent text-white shadow-[var(--shadow-accent)]' : 'surface'}`}>
           {p.highlight && <span className="absolute top-6 right-6 rounded-full bg-white/15 px-3 py-1 text-xs tracking-wide">Most popular</span>}
           <h3 className={`text-xl ${p.highlight ? 'text-white' : ''}`}>{p.name}</h3>
           <p className={`mt-2 text-[15px] ${p.highlight ? 'text-white/85' : 'text-ink-700'}`}>{p.blurb}</p>
@@ -373,10 +373,10 @@ export function CTABlock() {
   return (
     <section className="pb-20 sm:pb-28">
       <div className="container-x">
-        <Reveal className="relative overflow-hidden rounded-[28px] bg-accent px-6 py-16 text-center text-white shadow-[var(--shadow-accent)] sm:px-12 sm:py-20">
+        <Reveal className="relative overflow-hidden rounded-[28px] bg-accent px-5 py-12 text-center text-white shadow-[var(--shadow-accent)] sm:px-12 sm:py-20">
           <div className="pointer-events-none absolute -top-32 -right-24 size-96 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
           <div className="pointer-events-none absolute -bottom-40 -left-24 size-96 rounded-full bg-black/10 blur-3xl" aria-hidden="true" />
-          <h2 className="relative mx-auto max-w-2xl text-[34px] text-white sm:text-5xl">Ready to run your travel business from one place?</h2>
+          <h2 className="relative mx-auto max-w-2xl text-[28px] text-white min-[360px]:text-[34px] sm:text-5xl">Ready to run your travel business from one place?</h2>
           <p className="relative mx-auto mt-5 max-w-xl text-lg text-white/90">Join 500+ taxi operators, tour agencies and fleet owners who bill faster and get paid sooner with Travel Bill Pro.</p>
           <div className="relative mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <Button to="/demo" variant="light" className="!min-h-13 !px-7">Book Free Demo</Button>
@@ -393,7 +393,7 @@ export function CTABlock() {
 export function SectionTitle({ title, accent, sub, align = 'center' }) {
   return (
     <Reveal className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
-      <h2 className="text-[34px] sm:text-5xl">{title}{accent && <><br /><span className="text-accent">{accent}</span></>}</h2>
+      <h2 className="text-[28px] min-[360px]:text-[34px] sm:text-5xl">{title}{accent && <><br /><span className="text-accent">{accent}</span></>}</h2>
       {sub && <p className={`mt-5 text-lg text-ink-700 ${align === 'center' ? 'mx-auto max-w-2xl' : 'max-w-xl'}`}>{sub}</p>}
     </Reveal>
   )
