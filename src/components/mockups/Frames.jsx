@@ -77,9 +77,7 @@ export function AppShell({ active = 'dashboard', title, subtitle, action, childr
     <div className="flex h-[625px] w-[1000px] bg-[#F4F7FB] font-sans text-[12px] text-[#111827]">
       <aside className="flex w-[176px] shrink-0 flex-col px-3 py-4 text-[#5B6472]">
         <div className="mb-5 flex items-center gap-2 px-2">
-          <span className="inline-flex size-7 items-center justify-center rounded-lg bg-[#6a08db]">
-            <svg viewBox="0 0 32 32" className="size-4"><path d="M8 9h16M16 9v15" stroke="#fff" strokeWidth="3.6" strokeLinecap="round" /><circle cx="24" cy="22" r="3" fill="#F59E0B" /></svg>
-          </span>
+          <img src="/brand/travel-bill-pro-mark-128.png" alt="" width="28" height="28" className="size-7" loading="lazy" decoding="async" />
           <span className="text-[13px] font-semibold text-[#111827]">Travel Bill Pro</span>
         </div>
         <nav className="flex flex-col gap-1.5">

@@ -5,17 +5,15 @@ import { Menu, X, Phone } from 'lucide-react'
 import { NAV, SITE } from '../data/site'
 import { Button, WhatsAppIcon, SocialIcon, EASE } from './ui'
 
-/* ---------- Logo ---------- */
+/* ---------- Logo (brand artwork: public/brand/) ---------- */
 export function Logo({ className = '' }) {
   return (
-    <Link to="/" className={`inline-flex items-center gap-2 ${className}`} aria-label="Travel Bill Pro home">
-      <span className="inline-flex size-8 items-center justify-center rounded-[10px] bg-accent">
-        <svg viewBox="0 0 32 32" className="size-[18px]" aria-hidden="true">
-          <path d="M8 9h16M16 9v15" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" />
-          <circle cx="24" cy="22" r="3" fill="#F59E0B" />
-        </svg>
-      </span>
-      <span className="text-[19px] font-semibold tracking-tight text-ink-900">Travel Bill<span className="text-accent"> Pro</span></span>
+    <Link to="/" className={`inline-flex shrink-0 items-center ${className}`} aria-label="Travel Bill Pro home">
+      <picture>
+        <source srcSet="/brand/travel-bill-pro-logo-680.webp" type="image/webp" />
+        <img src="/brand/travel-bill-pro-logo-680.png" alt="Travel Bill Pro" width="680" height="165"
+          className="h-9 w-auto sm:h-10" decoding="async" fetchPriority="high" />
+      </picture>
     </Link>
   )
 }
